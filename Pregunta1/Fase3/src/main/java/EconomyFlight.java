@@ -2,6 +2,11 @@ import java.util.List;
 
 public class EconomyFlight extends Flight{
     private List<Passenger> passengers = getPassengers();
+
+    public EconomyFlight(String id) {
+        super(id);
+    }
+
     @Override
     public boolean addPassenger(Passenger passenger) {
         passengers.add(passenger);

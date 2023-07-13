@@ -1,23 +1,24 @@
 import java.util.List;
 
-public class EconomyFlight extends Flight{
+public class PremiumFlight extends Flight{
     private List<Passenger> passengers = getPassengers();
 
-    public EconomyFlight(String id) {
+    public PremiumFlight(String id) {
         super(id);
     }
 
     @Override
     public boolean addPassenger(Passenger passenger) {
-        passengers.add(passenger);
-        return true;
+        if (passenger.isVIP()){
+            return passengers.add(passenger);
+        }
+        return false;
     }
 
     @Override
     public boolean removePassenger(Passenger passenger) {
-        if (!passenger.isVIP()){
-            passengers.remove(passenger);
-            return true;
+        if (passengers.contains(passenger)){
+            return passengers.remove(passenger);
         }
         return false;
     }

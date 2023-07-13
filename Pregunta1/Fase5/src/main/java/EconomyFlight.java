@@ -1,7 +1,7 @@
-import java.util.List;
+import java.util.Set;
 
 public class EconomyFlight extends Flight{
-    private List<Passenger> passengers = getPassengers();
+    private Set<Passenger> passengers = getPassengers();
 
     public EconomyFlight(String id) {
         super(id);

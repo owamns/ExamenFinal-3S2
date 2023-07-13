@@ -5,40 +5,44 @@ import java.util.List;
 public class Flight {
     private String flightType;
     private List<Passenger> passengers;
+    private String id;
 
-    public Flight(String flightType) {
+    public Flight(String id, String flightType) {
         this.flightType = flightType;
         this.passengers = new ArrayList<>();
     }
 
     boolean addPassenger(Passenger passenger){
-        if (isValidPassenger(passenger)) {
-            passengers.add(passenger);
-            return true;
+        if (flightType.equals("business")) {
+            if (passenger.isVIP()){
+                return passengers.add(passenger);
+            }
+            return false;
         }
-        return false;
+        else if (flightType.equals("economy")){
+            return passengers.add(passenger);
+        }
+        else {
+            throw new RuntimeException("Tipo desconocido "+flightType);
+        }
     }
 
     boolean removePassenger(Passenger passenger){
-        if (!passenger.isVIP() && passengers.contains(passenger)) {
-            passengers.remove(passenger);
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isValidPassenger(Passenger passenger){
-        if (flightType.equals("business") && passenger.isVIP()) {
-            return true;
+        if (flightType.equals("business")) {
+            return false;
         }
         else if (flightType.equals("economy")){
-            return true;
+            if (!passenger.isVIP()){
+                return passengers.remove(passenger);
+            }
+            return false;
         }
-        return false;
+        else {
+            throw new RuntimeException("Tipo desconocido "+flightType);
+        }
     }
 
     public List<Passenger> getPassengers() {
         return passengers;
     }
-
 }

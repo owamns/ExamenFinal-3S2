@@ -7,23 +7,23 @@ public class AirportTest {
 
     @Test
     public void testAddPassengersEconomyFlight(){
-        EconomyFlight economyFlight = new EconomyFlight();
+        EconomyFlight economyFlight = new EconomyFlight("1");
 
-        Passenger normalPassenger = new Passenger(false);
-        Passenger vipPassenger = new Passenger(true);
+        Passenger normalPassenger = new Passenger("Luis", false);
+        Passenger vipPassenger = new Passenger("Ana", true);
 
         economyFlight.addPassenger(normalPassenger);
         economyFlight.addPassenger(vipPassenger);
 
-        assertTrue(economyFlight.getPassengers().contains(normalPassenger));
-        assertTrue(economyFlight.getPassengers().contains(vipPassenger));
+        assertEquals("Luis", economyFlight.getPassengers().get(0).getName());
+        assertEquals("Ana", economyFlight.getPassengers().get(1).getName());
     }
 
     @Test
     public void testAddNormalPassengerBusinessFlight(){
-        BusinessFlight businessFlight = new BusinessFlight();
+        BusinessFlight businessFlight = new BusinessFlight("2");
 
-        Passenger normalPassenger = new Passenger(false);
+        Passenger normalPassenger = new Passenger("Luis", false);
 
         businessFlight.addPassenger(normalPassenger);
         List<Passenger> passengers = businessFlight.getPassengers();
@@ -32,20 +32,20 @@ public class AirportTest {
 
     @Test
     public void testAddVipPassengerBusinessFlight(){
-        BusinessFlight businessFlight = new BusinessFlight();
+        BusinessFlight businessFlight = new BusinessFlight("2");
 
-        Passenger vipPassenger = new Passenger(true);
+        Passenger vipPassenger = new Passenger("Ana", true);
 
         businessFlight.addPassenger(vipPassenger);
         List<Passenger> passengers = businessFlight.getPassengers();
-        assertTrue(passengers.contains(vipPassenger));
+        assertEquals("Ana", businessFlight.getPassengers().get(0).getName());
     }
 
     @Test
     public void testRemoveNormalPassengerFromEconomyFlight(){
-        EconomyFlight economyFlight = new EconomyFlight();
+        EconomyFlight economyFlight = new EconomyFlight("1");
 
-        Passenger normalPassenger = new Passenger(false);
+        Passenger normalPassenger = new Passenger("Luis", false);
 
         economyFlight.addPassenger(normalPassenger);
         economyFlight.removePassenger(normalPassenger);
@@ -55,26 +55,26 @@ public class AirportTest {
 
     @Test
     public void testRemoveVipPassengerFromEconomyFlight(){
-        EconomyFlight economyFlight = new EconomyFlight();
+        EconomyFlight economyFlight = new EconomyFlight("1");
 
-        Passenger vipPassenger = new Passenger(true);
+        Passenger vipPassenger = new Passenger("Ana", true);
 
         economyFlight.addPassenger(vipPassenger);
         economyFlight.removePassenger(vipPassenger);
         List<Passenger> passengers = economyFlight.getPassengers();
-        assertTrue(passengers.contains(vipPassenger));
+        assertEquals("Ana", passengers.get(0).getName());
     }
 
     @Test
     public void testRemoveVipPassengerFromBusinessFlight(){
-        BusinessFlight businessFlight = new BusinessFlight();
+        BusinessFlight businessFlight = new BusinessFlight("2");
 
-        Passenger vipPassenger = new Passenger(true);
+        Passenger vipPassenger = new Passenger("Ana", true);
 
         businessFlight.addPassenger(vipPassenger);
         businessFlight.removePassenger(vipPassenger);
         List<Passenger> passengers = businessFlight.getPassengers();
-        assertTrue(passengers.contains(vipPassenger));
+        assertEquals("Ana", passengers.get(0).getName());
     }
 
 }

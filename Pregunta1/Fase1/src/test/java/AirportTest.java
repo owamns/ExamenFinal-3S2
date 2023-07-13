@@ -14,10 +14,10 @@ class AirportTest {
 
     @BeforeEach
     public void createAirport(){
-        economyFlight = new Flight("economy");
-        businessFlight = new Flight("business");
-        normalPassenger = new Passenger(false);
-        vipPassenger = new Passenger(true);
+        economyFlight = new Flight("1", "economy");
+        businessFlight = new Flight("2", "business");
+        normalPassenger = new Passenger("Luis",false);
+        vipPassenger = new Passenger("Ana", true);
     }
 
     @Test
@@ -25,7 +25,7 @@ class AirportTest {
 
         economyFlight.addPassenger(normalPassenger);
         List<Passenger> passengers = economyFlight.getPassengers();
-        assertTrue(passengers.contains(normalPassenger));
+        assertEquals("Luis", passengers.get(0).getName());
     }
 
     @Test
@@ -33,7 +33,7 @@ class AirportTest {
 
         economyFlight.addPassenger(vipPassenger);
         List<Passenger> passengers = economyFlight.getPassengers();
-        assertTrue(passengers.contains(vipPassenger));
+        assertEquals("Ana", passengers.get(0).getName());
     }
 
     @Test
@@ -49,7 +49,7 @@ class AirportTest {
 
         businessFlight.addPassenger(vipPassenger);
         List<Passenger> passengers = businessFlight.getPassengers();
-        assertTrue(passengers.contains(vipPassenger));
+        assertEquals("Ana", passengers.get(0).getName());
     }
 
     @Test
@@ -67,7 +67,7 @@ class AirportTest {
         economyFlight.addPassenger(vipPassenger);
         economyFlight.removePassenger(vipPassenger);
         List<Passenger> passengers = economyFlight.getPassengers();
-        assertTrue(passengers.contains(vipPassenger));
+        assertEquals("Ana", passengers.get(0).getName());
     }
 
     @Test
@@ -76,7 +76,7 @@ class AirportTest {
         businessFlight.addPassenger(vipPassenger);
         businessFlight.removePassenger(vipPassenger);
         List<Passenger> passengers = businessFlight.getPassengers();
-        assertTrue(passengers.contains(vipPassenger));
+        assertEquals("Ana", passengers.get(0).getName());
     }
 
 }
