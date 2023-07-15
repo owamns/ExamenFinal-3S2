@@ -1,5 +1,9 @@
 ## Pregunta 1
 
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/a.png">
+</h1>
+
 # Fase 1
 
 Pregunta:
@@ -15,6 +19,16 @@ métodos `addPassenger` y `addPassenger` tienen una excepción, donde si el atri
 del tipo de vuelo `economy` o `business` se muestra la excepción. Una posible refactorización para evitar esta excepción donde se 
 puede crear un tipo de vuelo diferente a los que se pide es crear clases distintas de los tipos de vuelos
 que se necesita, de esta forma se evita usar el atributo `flightType`.
+
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f1.png">
+</h1>
+
+
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f1-1.png">
+</h1>
+
 
 # Fase 2
 Preguntas:
@@ -37,6 +51,14 @@ En la fase 1 la cobertura del codigo no alcanzaba el 100% debido al atributo `fl
 de la clase abstracta `Flight`, el cual tiene como métodos abstractos `addPassenger` y `addPassenger` se implementan en las clases 
 `EconomyFlight` y `BusinessFlight`, esto ayuda en las pruebas debido que nos centramos en hacer las pruebas en los pasajeros. La 
 refactorización mejoro la calidad del código debido a que hora el cobertura para las pruebas implementadas es del 100% 
+
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f2.png">
+</h1>
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f2-1.png">
+</h1>
+
 
 # Fase 3
 
@@ -109,7 +131,10 @@ public class AirportTest {
 .
 }
 ```
-De igual forma se tiene las pruebas para un vuelo de negocios.
+De igual forma se tiene las pruebas para un vuelo de negocios en la clase `AirportTest`.
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f3.png">
+</h1>
 
 # Fase 4
 
@@ -186,6 +211,9 @@ public class AirportTest {
     }
 }
 ```
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f4.png">
+</h1>
 Luego de ejecutar las pruebas, la cobertura del código es del 100%.
 
 # Fase 5
@@ -241,4 +269,7 @@ public void testPassengerOnlyCheckInOnceOnAFlight(){
 
 }
 ```
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f5.png">
+</h1>
 La cobertura del código es del 100%.
