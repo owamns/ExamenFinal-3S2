@@ -43,18 +43,6 @@ public class Testwebclient {
         assertEquals("Esto trabaja", workingContent);
     }
 
-    @Test
-    public void testHttpGet() throws IOException {
-        URL.setURLStreamHandlerFactory(new StubStreamHandlerFactory());
-        //URL url = new URL("http://www.example.com");
-        URL url = new URL("http://localhost:8081");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-        String response = reader.readLine();
-
-        assertEquals("Esto funciona", response);
-    }
-
-
 
     private static class TestGetContentOkHandler extends AbstractHandler {
 
@@ -68,6 +56,16 @@ public class Testwebclient {
             writer.writeTo(out);
             out.flush();
         }
+    }
+
+    @Test
+    public void testHttpGet() throws IOException {
+        URL.setURLStreamHandlerFactory(new StubStreamHandlerFactory());
+        URL url = new URL("http://localhost:8081");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+        String response = reader.readLine();
+
+        assertEquals("Esto funciona", response);
     }
 
     private static class StubStreamHandlerFactory implements URLStreamHandlerFactory{
