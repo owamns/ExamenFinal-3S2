@@ -36,6 +36,10 @@ public class Jetty {
     }
 }
 ```
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta2/files/p0.png">
+</h1>
+
 Tambien se creo una prueba en la clase `TestWebClientInicial` en la cuel se obtiene el contenido 
 de la url y se verifica si se envio el contenido del archivo `pom.xml`, la prueba es la siguiente:
 
@@ -72,6 +76,9 @@ public class TestWebClientInicial{
 .
 }
 ```
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta2/files/r1.png">
+</h1>
 
 Pregunta:
 
@@ -86,7 +93,7 @@ private static class TestGetContentOkHandler extends AbstractHandler {
   public void handle(String s, Request request, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException{
     OutputStream out = response.getOutputStream();
     ByteArrayISO8859Writer writer = new ByteArrayISO8859Writer ();
-    writer.write("Esto funciona");
+    writer.write("Esto trabaja");
     writer.flush();
     response.setIntHeader(s, writer.size());
     writer.writeTo(out);
@@ -146,6 +153,10 @@ private static class TestGetContentOkHandler extends AbstractHandler {
     }
 }
 ```
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta2/files/p2.png">
+</h1>
+
 En la prueba se espera que se obtenga el String `Esto trabaja` dado que el código de la clase 
 privada `TestGetContentOkHandler` escribe la cadena `Esto trabaja` en el cuerpo de la respuesta HTTP.
 La prueba pasa.
@@ -241,3 +252,6 @@ public void testHttpGet() throws IOException {
     assertEquals("Esto funciona", response);
 }
 ```
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta2/files/r3.png">
+</h1>
