@@ -153,7 +153,53 @@ Comprueba que la cobertura del código es del 100%.
 
 Respuesta:
 
-Luego de implementar la clase `PremiumFlight` la prueba para esta clase es la siguiente:
+TDD;
+
+Sin implementar las funciones de los metodos `addPassenger` y `removePassenger` en la clase `PremiumFlight`
+tenemos:
+```
+public class PremiumFlight extends Flight{
+    private List<Passenger> passengers = getPassengers();
+
+    public PremiumFlight(String id) {
+        super(id);
+    }
+
+    @Override
+    public boolean addPassenger(Passenger passenger) {
+        return false;
+    }
+
+    @Override
+    public boolean removePassenger(Passenger passenger) {
+        return false;
+    }
+}
+```
+Al realizar las pruebas para un pasajero regular las siguientes pruebas pasan:
+```
+@Test
+public void testAddNotVipPassengerPremiumFlight(){
+    PremiumFlight premiumFlight = new PremiumFlight("3");
+    Passenger normalPassenger = new Passenger("Luis",false);
+    assertEquals(false, premiumFlight.addPassenger(normalPassenger));
+    assertEquals(false, premiumFlight.removePassenger(normalPassenger));
+}
+```
+Pero falla la siguiente prueba cuando se quiere agregar un pasajero VIP
+
+```
+@Test
+public void testAddVipPassengerPremiumFlight(){
+    PremiumFlight premiumFlight = new PremiumFlight("3");
+    Passenger normalPassenger = new Passenger("Ana", true);
+    assertEquals(true, premiumFlight.addPassenger(normalPassenger));
+    assertEquals(true, premiumFlight.removePassenger(normalPassenger));
+}
+```
+
+por lo que se hace la refactorizacion de la clase `PremiumFlight` implementando las funcionalidades de los metodos
+`addPassenger` y `removePassenger`, la prueba para esta clase es la siguiente:
 
 ```
 public class AirportTest {
@@ -214,7 +260,10 @@ public class AirportTest {
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f4.png">
 </h1>
-Luego de ejecutar las pruebas, la cobertura del código es del 100%.
+
+Se hacen las pruebas verificando las condiciones para agregar y eliminar un pasajero normal y vip.
+Luego de ejecutar las pruebas, la cobertura del código es del 100%, debido a que se implementan todos los metodos de
+la clase `PremiumFlight`.
 
 # Fase 5
 
@@ -238,6 +287,24 @@ Luego crea una nueva prueba para verificar que un pasajero solo se puede agregar
 ¿Consigues una mejor cobertura de código?
 
 Respuesta:
+
+TDD:
+
+Haciendo una prueba para un vuelo economico usando `List`, para comprobar la unicidad:
+```
+@Test
+public void testAddPassenger(){
+    EconomyFlight economyFlight = new EconomyFlight("1");
+    Passenger passenger = new Passenger("Luis", false);
+
+    economyFlight.addPassenger(passenger);
+    economyFlight.addPassenger(passenger);
+
+    assertEquals(1, economyFlight.getPassengers().size());
+}
+```
+esta prueba falla debido a que al usar `List<>` se agregar 2 veces el mismo pasajero por lo que se tiene que cambiar 
+a conjuntos `Set<>` lo cual garantiza la unicidad de pasajeros.
 
 Dado que ahora se quiere garantizar la unicidad de los pasajeros en la clase abstracta `Flight` se cambia el atributo: 
 ```
@@ -272,4 +339,4 @@ public void testPassengerOnlyCheckInOnceOnAFlight(){
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/owamns/ExamenFinal-3S2/main/Pregunta1/files/f5.png">
 </h1>
-La cobertura del código es del 100%.
+La cobertura del código no cambio desde la fase 4 (100%), dado que se refactorizo como se almacenan los pasajeros .
